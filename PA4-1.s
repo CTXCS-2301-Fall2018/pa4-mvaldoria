@@ -21,13 +21,14 @@ main:
 	@-------------
 
     MOV R4, #0 @Store #0 into R4 as a counter --> x = 0
-    MOV R1, #0 @Store #0 into R1 as sum --> sum = 0
+    MOV R1, #0 @Store #0 into R1 as sum --> initialSum = 0
 
 _loop:
     ADD R4, R4, #1  @ Add R4 + #1 --> update counter and store into R4
-    ADD R1, R4, R1  @ Add R4 + R5 and store to R1.
-    CMP R4, R3      @ Compare R4 to R3
-    BNE _loop       @ Loop if R4 not equal to R3.
+    ADD R1, R4, R1  @ Add R4 + R1 and store to R1. --> sum = x + initialSum,
+                    @ then once it loops it becomes sum = x + sum.
+    CMP R4, R3      @ Compare R4 to R3.
+    BNE _loop       @ Loop if R4 not equal to R3 --> if(x != 5) then loop, else stop.
 
 
 
