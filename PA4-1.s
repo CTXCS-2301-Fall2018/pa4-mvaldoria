@@ -1,5 +1,8 @@
 
-	@	Put the required header information here
+	@	Marc Valdoria
+	@   PA4-1
+	@   10/22/18
+
 
 	.extern printf
 	.extern scanf
@@ -17,15 +20,24 @@ main:
 	@ in R1.
 	@-------------
 
-	
-	
+    MOV R4, #0 @Store #0 into R4 as a counter --> x = 0
+    MOV R1, #0 @Store #0 into R1 as sum --> sum = 0
+
+_loop:
+    ADD R4, R4, #1  @ Add R4 + #1 --> update counter and store into R4
+    ADD R1, R4, R1  @ Add R4 + R5 and store to R1.
+    CMP R4, R3      @ Compare R4 to R3
+    BNE _loop       @ Loop if R4 not equal to R3.
+
+
+
 	@-------------
 	@ Do NOT alter code past this line.
 	@-------------
 	LDR	R0, =out
 	BL	printf
 	POP	{PC}
-	
+
 .data
 startval:	.word 1
 endval:		.word 5
